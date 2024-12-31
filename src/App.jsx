@@ -13,7 +13,7 @@ function App() {
       <p>now from container file ,it has been changed by local file too</p>
       <Icons />
       <h3>CI-CD DEPLOYMENT</h3>
-      <span>checke for  span update</span>
+      <span>still no reflect any automation </span>
     </>
   );
 }
