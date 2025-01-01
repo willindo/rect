@@ -14,7 +14,6 @@ function App() {
       <h3>CI-CD DEPLOYMENT</h3>
       <Icons />
       <span>changed ipppolreflect any automation </span>
-      <span>changed ipppolreflect any automation </span>
     </>
   );
 }
