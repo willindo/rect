@@ -13,7 +13,7 @@ function App() {
       <p>now from container file ,it has been changed by local file too</p>
       <h3>CI-CD DEPLOYMENT</h3>
       <Icons />
-      <span>changed ipppolreflect any automation </span>
+      {/* <span>changed ipppolreflect any automation </span> */}
     </>
   );
 }
