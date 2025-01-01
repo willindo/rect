@@ -36,38 +36,25 @@ jobs:
       - name: Push Docker image
         run: docker push badshanoordeen/just-try:latest
 
-  # deploy:
-  #   runs-on: ubuntu-latest
-  #   needs: build
-
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@v2
-
-  #     - name: Set up kubectl
-  #       uses: azure/setup-kubectl@v1
-  #       with:
-  #         version: "v1.21.0"
-
-  #     - name: Deploy to Kubernetes
-  #       run: kubectl apply -f deployment.yaml
-  #       env:
-  #         KUBECONFIG: ${{ secrets.KUBECONFIG }}
-
-  # deploy:
-  #   runs-on: ubuntu-latest
-  #   needs: build
-
-  #   steps:
-  #   - name: Checkout code
-  #     uses: actions/checkout@v2
-
-  #   - name: Set up kubectl
-  #     uses: azure/setup-kubectl@v1
-  #     with:
-  #       version: 'v1.21.0'
-
-  #   - name: Deploy to Kubernetes
-  #     run: kubectl apply -f deployment.yaml
-  #     env:
-  #       KUBECONFIG: ${{ secrets.KUBECONFIG }}
+        deploy:
+          runs-on: ubuntu-latest
+          needs: build
+      
+          steps:
+          - name: Checkout code
+            uses: actions/checkout@v2
+      
+          - name: Set up kubectl
+            uses: azure/setup-kubectl@v1
+            with:
+              version: 'v1.21.0'
+      
+          - name: Update Kubernetes deployment
+            run: kubectl set image deployment/just-try-deployment just-try=badshanoordeen/just-try:${{ github.sha }}
+            env:
+              KUBECONFIG: ${{ secrets.KUBECONFIG }}
+      
+          - name: Rollout restart
+            run: kubectl rollout restart deployment/just-try-deployment
+            env:
+              KUBECONFIG: ${{ secrets.KUBECONFIG }}
