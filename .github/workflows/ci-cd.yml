@@ -58,6 +58,11 @@ jobs:
         env:
           KUBECONFIG: ${{ secrets.KUBECONFIG }}
 
+      - name: Set up Minikube environment
+        run: |
+          minikube start
+          minikube update-context
+
       - name: Update Kubernetes deployment
         run: kubectl set image deployment/just-try-deployment just-try=badshanoordeen/just-try:latest
         env:
