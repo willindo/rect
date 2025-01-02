@@ -48,9 +48,13 @@ jobs:
         uses: azure/setup-kubectl@v1
         with:
           version: "v1.21.0"
-
       - name: Decode and set kubeconfig
-        run: echo "${{ secrets.KUBECONFIG }}" | base64 --decode > $HOME/.kube/config
+        run: |
+            mkdir -p $HOME/.kube
+            echo "${{ secrets.KUBECONFIG }}" > $HOME/.kube/config    
+
+      # - name: Decode and set kubeconfig
+      #   run: echo "${{ secrets.KUBECONFIG }}" | base64 --decode > $HOME/.kube/config
 
       # - name: Verify kubeconfig
       #   run: |
