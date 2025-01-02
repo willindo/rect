@@ -63,5 +63,5 @@ jobs:
             exit 1
           fi
 
-      # - name: Apply Kubernetes deployment
-      #   run: kubectl apply -f deployment.yaml
+      - name: Apply Kubernetes deployment
+        run: kubectl apply -f deployment.yaml
