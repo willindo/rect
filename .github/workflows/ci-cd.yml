@@ -56,12 +56,16 @@ jobs:
       # - name: Decode and set kubeconfig
       #   run: echo "${{ secrets.KUBECONFIG }}" | base64 --decode > $HOME/.kube/config
 
+      - name: Decode and set certificates
+        run: |
+          mkdir -p $HOME/.minikube/profiles/minikube
+          echo "${{ secrets.CA_CRT }}" | base64 --decode > $HOME/.minikube/ca.crt
+          echo "${{ secrets.CLIENT_CRT }}" | base64 --decode > $HOME/.minikube/profiles/minikube/client.crt
+          echo "${{ secrets.CLIENT_KEY }}" | base64 --decode > $HOME/.minikube/profiles/minikube/client.key
+
       - name: Verify kubeconfig
         run: |
-          if ! kubectl config view; then
-            echo "Error: kubeconfig is not valid"
-            exit 1
-          fi
-
-      - name: Apply Kubernetes deployment
-        run: kubectl apply -f deployment.yaml
+         if ! kubectl config view; then
+           echo "Error: kubeconfig is not valid"
+           exit 1
+         fi
