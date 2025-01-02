@@ -56,12 +56,12 @@ jobs:
       # - name: Decode and set kubeconfig
       #   run: echo "${{ secrets.KUBECONFIG }}" | base64 --decode > $HOME/.kube/config
 
-      # - name: Verify kubeconfig
-      #   run: |
-      #     if ! kubectl config view; then
-      #       echo "Error: kubeconfig is not valid"
-      #       exit 1
-      #     fi
+      - name: Verify kubeconfig
+        run: |
+          if ! kubectl config view; then
+            echo "Error: kubeconfig is not valid"
+            exit 1
+          fi
 
       # - name: Apply Kubernetes deployment
       #   run: kubectl apply -f deployment.yaml
