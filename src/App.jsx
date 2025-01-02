@@ -12,7 +12,7 @@ function App() {
       <h3>CI-CD DEPLOYMENT</h3>
       <h1>really excited live develop environment </h1>
       <Icons />
-      <p>ci/cd WORKFLOW SUCCESS AUTO PUSH DOCKERHUB</p>
+      {/* <p>ci/cd WORKFLOW SUCCESS AUTO PUSH DOCKERHUB</p> */}
       <span>changed ipppolreflect any automation </span>
     </>
   );
