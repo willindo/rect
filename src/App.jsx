@@ -9,7 +9,7 @@ function App() {
 
   return (
     <>
-      <p>now from container file ,it has been changed by local file too</p>
+      <p>my ci/cd WORKFLOW SUCCESS AUTO PUSH DOCKERHUB</p>
       <h1>really excited live develop environment </h1>
       <h3>CI-CD DEPLOYMENT</h3>
       <Icons />
