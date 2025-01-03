@@ -59,9 +59,10 @@ jobs:
       - name: Decode and set certificates
         run: |
           mkdir -p $HOME/.minikube/profiles/minikube
-          echo "${{ secrets.CA_CRT }}" | base64 --decode > $HOME/.minikube/ca.crt
-          echo "${{ secrets.CLIENT_CRT }}" | base64 --decode > $HOME/.minikube/profiles/minikube/client.crt
-          echo "${{ secrets.CLIENT_KEY }}" | base64 --decode > $HOME/.minikube/profiles/minikube/client.key
+          base64 --decode < ./ca.crt.base64 > $HOME/.minikube/ca.crt
+          base64 --decode < ./client.crt.base64 > $HOME/.minikube/profiles/minikube/client.crt
+          base64 --decode < ./client.key.base64 > $HOME/.minikube/profiles/minikube/client.key
+
 
       - name: Verify kubeconfig
         run: |
