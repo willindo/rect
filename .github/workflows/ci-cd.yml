@@ -60,7 +60,7 @@ jobs:
         run: |
           mkdir -p $HOME/.minikube/profiles/minikube
           base64 --decode < ./ca.crt.base64 > $HOME/.minikube/ca.crt
-          base64 --decode < ./Users/PKb/Desktop/coding/vtdcr/rect/client.crt.base64 > $HOME/.minikube/profiles/minikube/client.crt
+          base64 --decode < ./client.crt.base64 > $HOME/.minikube/profiles/minikube/client.crt
           base64 --decode < ./client.key.base64 > $HOME/.minikube/profiles/minikube/client.key
 
 
